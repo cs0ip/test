@@ -1,23 +1,21 @@
 package app
 
 import cats.effect.{IO, Sync}
-
-import scala.language.higherKinds
 import cats.syntax.flatMap._
 import cats.syntax.functor._
+
+import scala.language.higherKinds
 
 object Main {
 
   case class Service(x: Int, y: Int)
 
   case class Builder[F[_] : Sync](x: F[Int], y: F[Int]) {
-    def result: F[Service] = {
-      val F = Sync[F]
+    def result: F[Service] =
       for {
         xV <- x
         yV <- y
       } yield Service(xV, yV)
-    }
   }
 
   def newBuilder[F[_] : Sync]: Builder[F] = {
