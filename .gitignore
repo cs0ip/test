@@ -1,0 +1,13 @@
+logs
+target
+.idea
+.idea_modules
+.classpath
+.project
+.settings
+RUNNING_PID
+*.swp
+*.retry
+*.log
+*.lock
+.DS_Store
